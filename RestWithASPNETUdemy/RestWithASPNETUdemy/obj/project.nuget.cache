@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "houbxJERIPxVnfzaa1NVchr4eRZhskC4+ud8smcrSV5CG7jiHAwTztO4sHKzw8BZtJFjoAOhvPP8vaLaQwfdTg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\six\\Desktop\\erudio-microsservices-dotnet6\\RestWithASPNETUdemy\\RestWithASPNETUdemy\\RestWithASPNETUdemy.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\six\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.15\\microsoft.netcore.app.host.win-x64.5.0.15.nupkg.sha512",
+    "C:\\Users\\six\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\six\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\six\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
