@@ -1,4 +1,4 @@
-using GeekShopping.Web.Models;
+﻿using GeekShopping.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
