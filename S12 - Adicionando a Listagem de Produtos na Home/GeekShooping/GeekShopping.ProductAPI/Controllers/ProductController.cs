@@ -22,7 +22,7 @@ namespace GeekShopping.ProductAPI.Controllers {
         }
 
         [HttpGet("{id}")]
-        [Authorize]  //só permite o acesso se estiver autenticado
+        [Authorize]
         public async Task<ActionResult<ProductVO>> FindById(long id) {
             var product = await _repository.FindById(id);
             if (product == null) return NotFound();
