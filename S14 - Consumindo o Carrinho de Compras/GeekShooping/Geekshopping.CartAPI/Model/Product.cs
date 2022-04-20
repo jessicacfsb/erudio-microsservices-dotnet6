@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GeekShopping.CartAPI.Model.Base;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GeekShopping.CartAPI.Model {
@@ -6,7 +7,7 @@ namespace GeekShopping.CartAPI.Model {
     //Definir o nome da Tabela no banco
     [Table("product")]
 
-    public class Product  {
+    public class Product : BaseEntity {
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column("id")]
