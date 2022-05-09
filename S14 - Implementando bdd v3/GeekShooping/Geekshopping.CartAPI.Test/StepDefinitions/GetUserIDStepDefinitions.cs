@@ -1,7 +1,5 @@
 using NUnit.Framework;
-using System;
 using System.Net.Http.Headers;
-using TechTalk.SpecFlow;
 
 namespace Geekshopping.CartAPI.Test.StepDefinitions
 {

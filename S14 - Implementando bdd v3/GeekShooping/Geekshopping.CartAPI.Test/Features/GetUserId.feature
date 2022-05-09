@@ -2,7 +2,7 @@
 
 Funcionalidade: GetUserID
 	Dado que eu sou um consumidor da API 
-	Gostaria de adicionar um produto ao carrinho de compras
+	Gostaria de identificar o carrinho do usuário selecionado
 
 Cenario: Obter identificador do cliente
 	Dado que o id usuário seja 'e485f22f-edd2-4538-bdba-8ff7cef95ce4'
