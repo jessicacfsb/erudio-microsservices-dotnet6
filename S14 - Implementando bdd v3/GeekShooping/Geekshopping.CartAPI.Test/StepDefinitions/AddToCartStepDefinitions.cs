@@ -1,5 +1,6 @@
 using GeekShopping.CartAPI.Data.ValueObjects;
 using GeekShopping.CartAPI.Model;
+using GeekShopping.Web.Utils;
 using NUnit.Framework;
 using System;
 using System.Net.Http.Headers;
@@ -31,7 +32,7 @@ namespace Geekshopping.CartAPI.Test.StepDefinitions
         public void GivenOMetodo(string method)
         {
             _scenarioContext["Method"] = method;
-            string userId = (string)_scenarioContext["UserId"];
+            string userId = (string)_scenarioContext["User"];
             URL += $"add-cart/{userId}";
 
         }
@@ -40,14 +41,14 @@ namespace Geekshopping.CartAPI.Test.StepDefinitions
         public async Task WhenOMetodoForExecutado()
         {
             var cartDetail = new List<CartDetailVO>();
-            var userId = (string)_scenarioContext["UserId"];
+            var userId = (string)_scenarioContext["User"];
             cartDetail.Add(new CartDetailVO
             {
-                Id = 0,
-                CartHeaderId = 0,
+                Id = 11,
+                CartHeaderId = 13,
                 CartHeader = new CartHeaderVO()
                 {
-                    Id = 0,
+                    Id = 13,
                     UserId = userId,
                     CuponCode = ""
                 },
@@ -61,7 +62,7 @@ namespace Geekshopping.CartAPI.Test.StepDefinitions
                     CategoryName = "T-Shirt",
                     ImageURL = "https://github.com/jessicacfsb/erudio-microsservices-dotnet6/blob/main/S08%20-%20Organizando%20Arquitetura/GeekShooping/ShoppingImages/2_no_internet.jpg?raw=true"
                 },
-                Count = 3
+                Count = 7
             });
 
             var cart = new CartVO()
@@ -77,7 +78,6 @@ namespace Geekshopping.CartAPI.Test.StepDefinitions
             var client = new HttpClient();
             var dataAsString = JsonSerializer.Serialize(cart);
             var content = new StringContent(dataAsString);
-            content.Headers.ContentType = contentType;
             var result = await client.PostAsync(URL, content);
             _scenarioContext["Response"] = result;
         }

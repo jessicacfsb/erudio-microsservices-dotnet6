@@ -8,7 +8,7 @@ namespace Geekshopping.CartAPI.Test.StepDefinitions
     {
         private static MediaTypeHeaderValue contentType
             = new MediaTypeHeaderValue("application/json");
-        private string URL = "https://localhost:4445/api/v1/Cart/";
+        private string URL = "https://localhost:4440/api/v1/Product";
         private readonly ScenarioContext _scenarioContext;
 
         public GetUserIDStepDefinitions(ScenarioContext scenarioContext)
