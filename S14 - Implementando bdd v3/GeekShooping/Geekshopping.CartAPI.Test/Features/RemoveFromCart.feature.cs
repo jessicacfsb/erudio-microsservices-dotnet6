@@ -102,7 +102,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 8
-    testRunner.Given("que o Id do item seja \'11\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+    testRunner.Given("que o Id do item seja \'22\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
 #line 9
     testRunner.And("o método \'DELETE\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");

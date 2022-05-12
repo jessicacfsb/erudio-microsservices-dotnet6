@@ -1,11 +1,7 @@
 using GeekShopping.CartAPI.Data.ValueObjects;
-using GeekShopping.CartAPI.Model;
-using GeekShopping.Web.Utils;
 using NUnit.Framework;
-using System;
 using System.Net.Http.Headers;
 using System.Text.Json;
-using TechTalk.SpecFlow;
 
 namespace Geekshopping.CartAPI.Test.StepDefinitions
 {
@@ -32,23 +28,23 @@ namespace Geekshopping.CartAPI.Test.StepDefinitions
         public void GivenOMetodo(string method)
         {
             _scenarioContext["Method"] = method;
-            string userId = (string)_scenarioContext["User"];
-            URL += $"add-cart/{userId}";
-
+            URL += $"add-cart";
         }
 
         [When(@"o metodo for executado")]
         public async Task WhenOMetodoForExecutado()
         {
+            string userId = (string)_scenarioContext["User"];
+            var client = new HttpClient();
+
             var cartDetail = new List<CartDetailVO>();
-            var userId = (string)_scenarioContext["User"];
             cartDetail.Add(new CartDetailVO
             {
-                Id = 11,
-                CartHeaderId = 13,
+                Id = 0,
+                CartHeaderId = 0,
                 CartHeader = new CartHeaderVO()
                 {
-                    Id = 13,
+                    Id = 0,
                     UserId = userId,
                     CuponCode = ""
                 },
@@ -57,12 +53,12 @@ namespace Geekshopping.CartAPI.Test.StepDefinitions
                 {
                     Id = 2,
                     Name = "Camiseta No Internet",
-                    Price = 69,
+                    Price = new decimal(69.900000000000000000000000000000),
                     Description = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
                     CategoryName = "T-Shirt",
                     ImageURL = "https://github.com/jessicacfsb/erudio-microsservices-dotnet6/blob/main/S08%20-%20Organizando%20Arquitetura/GeekShooping/ShoppingImages/2_no_internet.jpg?raw=true"
                 },
-                Count = 7
+                Count = 16
             });
 
             var cart = new CartVO()
@@ -75,9 +71,9 @@ namespace Geekshopping.CartAPI.Test.StepDefinitions
                 },
                 CartDetails = cartDetail,
             };
-            var client = new HttpClient();
             var dataAsString = JsonSerializer.Serialize(cart);
             var content = new StringContent(dataAsString);
+            content.Headers.ContentType = contentType;
             var result = await client.PostAsync(URL, content);
             _scenarioContext["Response"] = result;
         }
