@@ -35,7 +35,6 @@ namespace GeekShopping.ProductAPI.Test.StepDefinitions
         public async Task WhenChamarOMetodo()
         {
             var client = new HttpClient();
-            string route = (string)_scenarioContext["Route"];
             var result = await client.GetAsync(URL);
             _scenarioContext["Response"] = result;
         }

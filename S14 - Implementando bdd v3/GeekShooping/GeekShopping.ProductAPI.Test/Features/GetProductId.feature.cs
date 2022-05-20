@@ -28,7 +28,7 @@ namespace GeekShopping.ProductAPI.Test.Features
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "GetProduct.feature"
+#line 1 "GetProductId.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
@@ -105,7 +105,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("que o id do produto seja 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
 #line 9
- testRunner.And("o token seja token", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.And("que para autenticação seja recebido um token", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
 #line 10
  testRunner.And("o metodo http \'GET\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");

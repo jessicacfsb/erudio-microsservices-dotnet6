@@ -6,7 +6,7 @@ Funcionalidade: GetProductId
 
 Cenario: Obter identificador do Produto
 	Dado que o id do produto seja 2
-	E o token seja token
+	E que para autenticação seja recebido um token
 	E o metodo http 'GET'
 	Quando chamar o serviço
 	Entao statuscode de resposta deverá ser OK
