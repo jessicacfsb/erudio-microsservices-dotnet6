@@ -1,7 +1,4 @@
-using GeekShopping.ProductAPI.Data.ValueObjects;
-using GeekShopping.ProductAPI.Repository;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using RestSharp;
 using System.Net.Http.Headers;
@@ -17,20 +14,16 @@ namespace GeekShopping.ProductAPI.Test.StepDefinitions
             = new MediaTypeHeaderValue("application/json");
         private string URL = "https://localhost:4440/api/v1/Product/";
         private readonly ScenarioContext _scenarioContext;
-        private IProductRepository _repository;
 
-        public GetProductIdStepDefinitions(ScenarioContext scenarioContext, IProductRepository repository)
+        public GetProductIdStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
-
         }
+
         [Given(@"que o id do produto seja (.*)")]
-        public async Task<ActionResult<ProductVO>> FindById(long id)
+        public void GivenQueOIdDoProdutoE(string id)
         {
-            var product = await _repository.FindById(id);
             _scenarioContext["ItemId"] = id;
-            return product;
         }
 
         [Given(@"que para autenticação seja recebido um token")]
