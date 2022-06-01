@@ -6,8 +6,7 @@ namespace GeekShopping.CartAPI.Model {
 
     //Definir o nome da Tabela no banco
     [Table("product")]
-
-    public class Product : BaseEntity {
+    public class Product {
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column("id")]
@@ -21,7 +20,7 @@ namespace GeekShopping.CartAPI.Model {
 
         [Column("price")]
         [Required]
-        [Range(1, 10000)]
+        [Range(1,10000)]
         public decimal Price { get; set; }
 
         [Column("description")]

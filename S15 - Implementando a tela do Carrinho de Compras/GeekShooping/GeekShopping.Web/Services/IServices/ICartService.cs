@@ -1,7 +1,7 @@
-﻿using GeekShopping.CartAPI.Data.ValueObjects;
-using GeekShopping.Web.Models;
+﻿using GeekShopping.Web.Models;
 
-namespace GeekShopping.Web.Services.IServices {
+namespace GeekShopping.Web.Services.IServices
+{
     public interface ICartService {
         Task<CartViewModel> FindCartByUserId(string userId, string token);
         Task<CartViewModel> AddItemToCart(CartViewModel cart, string token);

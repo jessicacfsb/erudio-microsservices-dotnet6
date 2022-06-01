@@ -2,7 +2,8 @@
 using GeekShopping.CartAPI.Data.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GeekShopping.CartAPI.Controllers {
+namespace GeekShopping.CartAPI.Controllers
+{
     [ApiController]
     [Route("api/v1/[controller]")]
     public class CartController : ControllerBase

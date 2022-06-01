@@ -44,7 +44,7 @@ namespace Geekshopping.CartAPI.Repository {
             return _mapper.Map<CartVO>(cart);
         }
 
-        public Task<bool> RemoveCupon(string userID) {
+        public Task<bool> RemoveCupon(string userId) {
             throw new NotImplementedException();
         }
 

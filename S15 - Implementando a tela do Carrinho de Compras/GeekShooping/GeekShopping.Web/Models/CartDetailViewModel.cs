@@ -1,6 +1,4 @@
-﻿using GeekShopping.Web.Models;
-
-namespace GeekShopping.CartAPI.Data.ValueObjects {
+﻿namespace GeekShopping.Web.Models {
 
     public class CartDetailViewModel {
 

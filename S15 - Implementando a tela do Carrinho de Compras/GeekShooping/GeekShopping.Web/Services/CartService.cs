@@ -1,10 +1,10 @@
-﻿using GeekShopping.CartAPI.Data.ValueObjects;
-using GeekShopping.Web.Models;
+﻿using GeekShopping.Web.Models;
 using GeekShopping.Web.Services.IServices;
 using GeekShopping.Web.Utils;
 using System.Net.Http.Headers;
 
-namespace GeekShopping.Web.Services {
+namespace GeekShopping.Web.Services
+{
     public class CartService : ICartService {
         private readonly HttpClient _client;
         public const string BasePath = "https://localhost:4445/api/v1/Cart";
