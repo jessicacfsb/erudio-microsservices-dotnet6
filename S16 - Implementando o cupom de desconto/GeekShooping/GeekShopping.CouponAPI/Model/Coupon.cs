@@ -4,20 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GeekShopping.CouponAPI.Model
 {
-
-    //Definir o nome da Tabela no banco
     [Table("coupon")]
-    public class Coupon : BaseEntity{
-
-        //Definir as colunas
+    public class Coupon : BaseEntity
+    {
         [Column("coupon_code")]
         [Required]
-        [StringLength(30)] //Definir o tamanho máximo
+        [StringLength(30)]
         public string CouponCode { get; set; }
 
         [Column("discount_amount")]
         [Required]
         public decimal DiscountAmount { get; set; }
-
     }
 }
