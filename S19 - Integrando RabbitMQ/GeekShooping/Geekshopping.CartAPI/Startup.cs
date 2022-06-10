@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Geekshopping.CartAPI.RabbitMQSender;
 
 namespace GeekShopping.CartAPI {
     public class Startup {
@@ -41,6 +42,7 @@ namespace GeekShopping.CartAPI {
 
             services.AddScoped<ICartRepository, CartRepository>();
 
+            services.AddSingleton<IRabbitMQMessageSender, RabbitMQMessageSender>();
             services.AddControllers();
 
             services.AddAuthentication("Bearer")
