@@ -1,8 +1,8 @@
 ﻿using Geekshopping.CartAPI.Model;
-using GeekShopping.CartAPI.Model.Base;
+using Geekshopping.CartAPI.Model.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GeekShopping.CartAPI.Model {
+namespace Geekshopping.CartAPI.Model {
     [Table("cart_detail")]
     public class CartDetail : BaseEntity {
         public long CartHeaderId { get; set; }

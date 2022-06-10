@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-namespace GeekShopping.CartAPI.Data.ValueObjects {
+namespace Geekshopping.CartAPI.Data.ValueObjects {
     public class CartVO {
         public CartHeaderVO CartHeader { get; set; }
         [ValidateNever]

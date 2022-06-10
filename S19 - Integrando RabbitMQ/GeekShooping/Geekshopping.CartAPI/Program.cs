@@ -1,5 +1,5 @@
 
-using GeekShopping.CartAPI;
+using Geekshopping.CartAPI;
 
 namespace GeekShopping.Web {
     public class Program {

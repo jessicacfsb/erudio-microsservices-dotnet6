@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using GeekShopping.CartAPI.Config;
-using GeekShopping.CartAPI.Model.Context;
+using Geekshopping.CartAPI.Config;
+using Geekshopping.CartAPI.Model.Context;
 using Geekshopping.CartAPI.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,8 +18,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Geekshopping.CartAPI.RabbitMQSender;
+using Geekshopping.CartAPI.Repository;
 
-namespace GeekShopping.CartAPI {
+namespace Geekshopping.CartAPI {
     public class Startup {
         public Startup(IConfiguration configuration) {
             Configuration = configuration;
@@ -61,7 +62,7 @@ namespace GeekShopping.CartAPI {
             });
 
             services.AddSwaggerGen(c => {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "GeekShopping.CartAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Geekshopping.CartAPI", Version = "v1" });
                 c.EnableAnnotations();
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme {
                     Description = @"Enter 'Bearer' [space] and your token!",
@@ -95,7 +96,7 @@ namespace GeekShopping.CartAPI {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GeekShopping.CartAPI v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Geekshopping.CartAPI v1"));
             }
 
             app.UseHttpsRedirection();

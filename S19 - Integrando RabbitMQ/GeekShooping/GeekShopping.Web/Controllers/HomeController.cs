@@ -38,8 +38,9 @@ namespace GeekShopping.Web.Controllers {
             var token = await HttpContext.GetTokenAsync("access_token");
 
             CartViewModel cart = new() {
-                CartHeader = new CartHeaderViewModel {
+                CartHeader = new CartHeaderViewModel{
                     UserId = User.Claims.Where(u => u.Type == "sub")?.FirstOrDefault()?.Value,
+                    CuponCode = "",
                 }
             };
 

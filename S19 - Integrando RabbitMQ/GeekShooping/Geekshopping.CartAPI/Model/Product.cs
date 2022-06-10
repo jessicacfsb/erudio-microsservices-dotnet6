@@ -1,8 +1,8 @@
-﻿using GeekShopping.CartAPI.Model.Base;
+﻿using Geekshopping.CartAPI.Model.Base;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GeekShopping.CartAPI.Model {
+namespace Geekshopping.CartAPI.Model {
 
     //Definir o nome da Tabela no banco
     [Table("product")]

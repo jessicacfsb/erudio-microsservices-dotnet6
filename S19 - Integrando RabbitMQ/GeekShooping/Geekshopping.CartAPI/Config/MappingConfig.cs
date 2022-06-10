@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Geekshopping.CartAPI.Model;
-using GeekShopping.CartAPI.Data.ValueObjects;
-using GeekShopping.CartAPI.Model;
+using Geekshopping.CartAPI.Data.ValueObjects;
+using Geekshopping.CartAPI.Model;
 
-namespace GeekShopping.CartAPI.Config {
+namespace Geekshopping.CartAPI.Config {
     public class MappingConfig {
         public static MapperConfiguration RegisterMaps() {
             var mappingConfig = new MapperConfiguration(config => {

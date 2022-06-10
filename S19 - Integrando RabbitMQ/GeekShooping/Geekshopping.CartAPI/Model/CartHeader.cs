@@ -1,4 +1,4 @@
-﻿using GeekShopping.CartAPI.Model.Base;
+﻿using Geekshopping.CartAPI.Model.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Geekshopping.CartAPI.Model {
