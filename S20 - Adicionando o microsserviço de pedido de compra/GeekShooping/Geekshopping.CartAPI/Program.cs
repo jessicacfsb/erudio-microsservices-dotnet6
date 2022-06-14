@@ -1,4 +1,3 @@
-
 using Geekshopping.CartAPI;
 
 namespace GeekShopping.Web {

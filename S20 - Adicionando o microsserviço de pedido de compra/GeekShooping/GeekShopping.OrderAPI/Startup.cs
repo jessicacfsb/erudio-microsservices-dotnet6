@@ -1,58 +1,66 @@
-﻿using AutoMapper;
-using Geekshopping.CartAPI.Config;
-using Geekshopping.CartAPI.Model.Context;
-using Geekshopping.CartAPI.RabbitMQSender;
-using Geekshopping.CartAPI.Repository;
+using GeekShopping.CartAPI.Repository;
+using GeekShopping.OrderAPI.MessageConsumer;
+using GeekShopping.OrderAPI.Model.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
-namespace Geekshopping.CartAPI
+namespace GeekShopping.OrderAPI
 {
-    public class Startup {
-        public Startup(IConfiguration configuration) {
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services) {
+        public void ConfigureServices(IServiceCollection services)
+        {
             var connection = Configuration["MySQlConnection:MySQlConnectionString"];
 
             services.AddDbContext<MySQLContext>(options => options.
                 UseMySql(connection,
                         new MySqlServerVersion(
                             new Version(8, 0, 28))));
+            
+            var builder = new DbContextOptionsBuilder<MySQLContext>();
+            builder.UseMySql(connection,
+                        new MySqlServerVersion(
+                            new Version(8, 0, 28)));
 
-            IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
-            services.AddSingleton(mapper);
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddSingleton(new OrderRepository(builder.Options));
 
-            services.AddScoped<ICartRepository, CartRepository>();
-
-            services.AddSingleton<IRabbitMQMessageSender, RabbitMQMessageSender>();
+            services.AddHostedService<RabbitMQCheckoutConsumer>();
             services.AddControllers();
 
             services.AddAuthentication("Bearer")
-                .AddJwtBearer("Bearer", options => {
+                .AddJwtBearer("Bearer", options =>
+                {
                     options.Authority = "https://localhost:4435/";
-                    options.TokenValidationParameters = new TokenValidationParameters {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
                         ValidateAudience = false
                     };
                 });
 
-            services.AddAuthorization(options => {
-                options.AddPolicy("ApiScope", policy => {
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ApiScope", policy =>
+                {
                     policy.RequireAuthenticatedUser();
                     policy.RequireClaim("scope", "geek_shopping");
                 });
             });
 
-            services.AddSwaggerGen(c => {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Geekshopping.CartAPI", Version = "v1" });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "GeekShopping.OrderAPI", Version = "v1" });
                 c.EnableAnnotations();
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme {
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
                     Description = @"Enter 'Bearer' [space] and your token!",
                     Name = "Authorization",
                     In = ParameterLocation.Header,
@@ -80,11 +88,13 @@ namespace Geekshopping.CartAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
-            if (env.IsDevelopment()) {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Geekshopping.CartAPI v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GeekShopping.OrderAPI v1"));
             }
 
             app.UseHttpsRedirection();
@@ -93,7 +103,8 @@ namespace Geekshopping.CartAPI
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints => {
+            app.UseEndpoints(endpoints =>
+            {
                 endpoints.MapControllers();
             });
         }
